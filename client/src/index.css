@@ -1,5 +1,27 @@
-/* GoodBye - 글로벌 스타일 */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+/* GoodBye - 글로벌 프리미엄 디자인 시스템 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@400;600;700&display=swap');
+
+:root {
+  /* 색상 토큰 */
+  --primary: #4a7c59;      /* Forest Green */
+  --primary-dark: #2e4a35;
+  --primary-light: #f0f7f2;
+  --secondary: #c9a96e;    /* Golden Beige */
+  --accent: #d46b4b;       /* Warm Earth */
+  --bg: #faf7f2;           /* Soft Paper */
+  --white: #ffffff;
+  
+  /* 글래스모피즘 & 효과 */
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-blur: blur(12px);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+  
+  /* 전역 애니메이션 */
+  --ease-premium: cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -8,35 +30,65 @@
 }
 
 body {
-  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: #faf7f2;
+  font-family: 'Noto Sans KR', 'Outfit', -apple-system, sans-serif;
+  background-color: var(--bg);
   color: #2c2c2c;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-/* 페이지 전환 애니메이션 */
+/* 프리미엄 글래스모피즘 유틸리티 */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 유연한 레이아웃 애니메이션 */
 .page-fade-in {
-  animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.5s var(--ease-premium);
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* 스크롤바 스타일 */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #f0ece4; }
-::-webkit-scrollbar-thumb { background: #c2b89e; border-radius: 3px; }
+/* 스크롤바 최적화 */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1cbc2; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #b2aa9a; }
 
-/* Ant Design 오버라이드 */
-.ant-layout-sider .ant-menu-item-selected {
-  background-color: #4a7c59 !important;
+/* Ant Design 오버라이드 및 고도화 */
+.ant-btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(74, 124, 89, 0.25) !important;
+  font-weight: 500 !important;
+  transition: all 0.3s var(--ease-premium) !important;
 }
 
-/* 반응형: 모바일에서 사이드바 숨김 */
+.ant-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(74, 124, 89, 0.35) !important;
+}
+
+.ant-card {
+  border-radius: 16px !important;
+  border: 1px solid rgba(0,0,0,0.03) !important;
+  transition: all 0.3s var(--ease-premium) !important;
+}
+
+/* 반응형 레이아웃 가이드 (고정 해제) */
 @media (max-width: 768px) {
   .main-sider {
-    display: none;
+    display: none !important;
+  }
+  
+  .ant-layout-header {
+    padding: 0 16px !important;
   }
 }
