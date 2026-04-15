@@ -76,8 +76,8 @@ function DashboardPage() {
     <div className="page-fade-in">
       {/* 프리미엄 히어로 배너 */}
       <Card
-        bordered={false}
-        bodyStyle={{ padding: 0 }}
+        variant="borderless"
+        styles={{ body: { padding: 0 } }}
         style={{
           background: 'linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%)',
           borderRadius: 24,
@@ -88,7 +88,7 @@ function DashboardPage() {
       >
         <Row align="middle">
           <Col xs={24} md={14} style={{ padding: '40px 48px' }}>
-            <Space direction="vertical" size={16}>
+            <Space orientation="vertical" size={16}>
               <Tag color="rgba(255,255,255,0.2)" style={{ borderRadius: 20, color: '#fff', border: 'none' }}>
                 {user?.role === 'PARENT' ? '부모님 계정' : '자녀 계정'}
               </Tag>
@@ -156,7 +156,7 @@ function DashboardPage() {
                 boxShadow: 'var(--shadow-md)',
                 overflow: 'hidden'
               }}
-              bodyStyle={{ padding: 28 }}
+              styles={{ body: { padding: 28 } }}
             >
               <div style={{ 
                 background: card.accent + '15', // 15% 투명도

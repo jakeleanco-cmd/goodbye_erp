@@ -164,7 +164,7 @@ function ContactsPage() {
       </Row>
 
       {/* 그룹 필터 */}
-      <Card style={{ marginBottom: 16, borderRadius: 12 }} bodyStyle={{ padding: '12px 16px' }}>
+      <Card style={{ marginBottom: 16, borderRadius: 12 }} styles={{ body: { padding: '12px 16px' } }}>
         <Space wrap>
           <Text type="secondary" style={{ fontSize: 13 }}>그룹 필터:</Text>
           <Button

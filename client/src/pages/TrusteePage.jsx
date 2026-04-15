@@ -165,7 +165,7 @@ function TrusteePage() {
 
             return (
               <Col xs={24} md={12} key={conn._id}>
-                <Card style={{ borderRadius: 12 }} bodyStyle={{ padding: 16 }}>
+                <Card style={{ borderRadius: 12 }} styles={{ body: { padding: 16 } }}>
                   <Space style={{ width: '100%', justifyContent: 'space-between' }}>
                     <Space>
                       <Avatar icon={<TeamOutlined />} style={{ background: '#4a6e8a' }} />

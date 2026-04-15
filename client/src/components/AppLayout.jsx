@@ -144,9 +144,12 @@ function AppLayout() {
         placement="left"
         onClose={() => setMobileMenuOpen(false)}
         open={mobileMenuOpen}
-        width={260}
-        bodyStyle={{ padding: 0 }}
-        headerStyle={{ display: 'none' }}
+        styles={{ 
+          wrapper: { width: 260 },
+          body: { padding: 0 }, 
+          header: { display: 'none' },
+          mask: { backdropFilter: 'blur(4px)' } 
+        }}
       >
         <SidebarContent />
       </Drawer>
