@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+require('dotenv').config();
+// 로컬 환경을 위해 상대 경로로 한 번 더 시도 (Vercel 환경 변수가 우선함)
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const connectDB = require('./db');
@@ -12,8 +14,10 @@ const obituaryRoutes = require('./routes/obituary');
 
 const app = express();
 
-// MongoDB 연결
-connectDB();
+// MongoDB 연결 - 서버 종료 방지를 위해 에러 캐치 추가
+connectDB().catch(err => {
+  console.error('[App] 초기 DB 연결 실패:', err.message);
+});
 
 // 미들웨어
 app.use(cors());

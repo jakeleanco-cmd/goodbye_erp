@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
-require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') });
+require('dotenv').config();
+const path = require('path');
+// 로컬 환경을 위해 상대 경로로 한 번 더 시도 (Vercel에서는 무시됨)
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const connectDB = async () => {
   if (mongoose.connection.readyState >= 1) return;

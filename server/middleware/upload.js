@@ -2,10 +2,18 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-// 업로드 디렉토리가 없으면 자동 생성
-const uploadDir = path.join(__dirname, '../uploads');
+// 업로드 디렉토리 설정
+// Vercel 환경에서는 /tmp 폴더만 쓰기가 가능하므로 환경에 따라 경로 조정
+const isVercel = process.env.VERCEL === '1';
+const uploadDir = isVercel ? '/tmp' : path.join(__dirname, '../uploads');
+
+// 업로드 디렉토리가 없으면 생성 시도 (Vercel에서는 읽기전용 필드에서 실패할 수 있으므로 try-catch 처리)
 if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
+  try {
+    fs.mkdirSync(uploadDir, { recursive: true });
+  } catch (err) {
+    if (!isVercel) console.error('[Upload] 디렉토리 생성 실패:', err.message);
+  }
 }
 
 // 파일을 서버 로컬 스토리지에 저장하는 설정
