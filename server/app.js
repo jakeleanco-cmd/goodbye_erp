@@ -35,4 +35,15 @@ app.get('/api', (req, res) => {
   res.json({ message: 'GoodBye API is running' });
 });
 
+// DB 연결 상태 확인용 헬스체크
+app.get('/api/health', async (req, res) => {
+  const mongoose = require('mongoose');
+  const dbStatus = mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected';
+  res.json({
+    status: 'OK',
+    database: dbStatus,
+    timestamp: new Date().toISOString()
+  });
+});
+
 module.exports = app;
