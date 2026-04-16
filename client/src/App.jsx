@@ -10,6 +10,10 @@ import UnlockRequestPage from './pages/UnlockRequestPage'
 import ObituaryPage from './pages/ObituaryPage'
 import AdminPage from './pages/AdminPage'
 import DashboardPage from './pages/DashboardPage'
+import LegacyMessagePage from './pages/LegacyMessagePage'
+import LegacyGuidePage from './pages/LegacyGuidePage'
+import FuneralWishPage from './pages/FuneralWishPage'
+import LegacyViewPage from './pages/LegacyViewPage'
 
 /**
  * 로그인된 사용자만 접근 가능한 라우트 보호 컴포넌트
@@ -43,6 +47,12 @@ function App() {
         <Route path="trustee" element={<TrusteePage />} />
         <Route path="unlock" element={<UnlockRequestPage />} />
         <Route path="obituary" element={<ObituaryPage />} />
+        
+        {/* Phase 2: Legacy Features */}
+        <Route path="legacy/messages" element={<LegacyMessagePage />} />
+        <Route path="legacy/guide" element={<LegacyGuidePage />} />
+        <Route path="legacy/funeral" element={<FuneralWishPage />} />
+        <Route path="legacy/view" element={<LegacyViewPage />} />
       </Route>
 
       {/* 관리자 전용 라우트 */}

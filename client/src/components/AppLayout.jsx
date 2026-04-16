@@ -12,6 +12,10 @@ import {
   UserOutlined,
   HeartOutlined,
   SettingOutlined,
+  MessageOutlined,
+  SolutionOutlined,
+  ReadOutlined,
+  CarryOutOutlined,
 } from '@ant-design/icons'
 import useAuthStore from '../stores/authStore'
 
@@ -39,10 +43,14 @@ function AppLayout() {
     ...(user?.role === 'PARENT' ? [
       { key: '/contacts', icon: <ContactsOutlined />, label: '연락처 관리' },
       { key: '/trustee', icon: <TeamOutlined />, label: '수속자 설정' },
+      { key: '/legacy/messages', icon: <MessageOutlined />, label: '마지막 편지' },
+      { key: '/legacy/guide', icon: <SolutionOutlined />, label: '자산 가이드' },
+      { key: '/legacy/funeral', icon: <CarryOutOutlined />, label: '장례 희망 사항' },
       { key: '/obituary', icon: <FileTextOutlined />, label: '부고 문자' },
     ] : []),
     ...(user?.role === 'CHILD' ? [
       { key: '/trustee', icon: <TeamOutlined />, label: '연결 관리' },
+      { key: '/legacy/view', icon: <ReadOutlined />, label: '유언/가이드 열람' },
       { key: '/unlock', icon: <UnlockOutlined />, label: '권한 활성화' },
       { key: '/obituary', icon: <FileTextOutlined />, label: '부고 문자' },
     ] : []),

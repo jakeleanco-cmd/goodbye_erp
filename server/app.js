@@ -11,6 +11,7 @@ const contactRoutes = require('./routes/contacts');
 const trusteeRoutes = require('./routes/trustee');
 const adminRoutes = require('./routes/admin');
 const obituaryRoutes = require('./routes/obituary');
+const legacyRoutes = require('./routes/legacy');
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use('/api/contacts', contactRoutes);
 app.use('/api/trustees', trusteeRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/obituary', obituaryRoutes);
+app.use('/api/legacy', legacyRoutes);
 
 // 기본 헬스체크 엔드포인트
 app.get('/api', (req, res) => {
