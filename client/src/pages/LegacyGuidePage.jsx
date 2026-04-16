@@ -10,7 +10,7 @@ import {
 } from '@ant-design/icons'
 import api from '../api/axios'
 
-const { Title, Text } = Typography
+const { Title, Text, Paragraph } = Typography
 const { TextArea } = Input
 
 /**
